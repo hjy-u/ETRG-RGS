@@ -46,14 +46,14 @@ Performance (mIoU) on Refcoco dataset:
 | ETRG-A-R50 | 79.82 | 89.06 | 92.17 | [models](https://drive.google.com/drive/folders/1jH-EgWZdZnpATMzYEUlDRCARLXy9zXwn?usp=sharing) | [log](https://drive.google.com/file/d/1zvSdIV2ssvWeSS_9grGkMk016RvV0x-d/view?usp=drive_link) | [log](https://drive.google.com/file/d/1fYJoWYLK3cHgUtzFCXxB7Faq9kl2VTvu/view?usp=drive_link) |
 | ETRG-A-R101 | 80.11 | 89.38 | 93.49 | [models](https://drive.google.com/drive/folders/1nllSCFrE_d4Eh1_uXMLmUk1FeTrqKbkA?usp=drive_link) | [log](https://drive.google.com/file/d/1ooVgrL4TQ-_6zUQHibmDkxMJ-jFKPeda/view?usp=drive_link) | [log](https://drive.google.com/file/d/107iPGfxFEbjySM7eblLeMYEhFghBMhKT/view?usp=drive_link) |
 
-## Train ETOG:
+## Train ETRG:
 
 Directly run the```train.py``` file. Please modify the config files ```(e.g. config/OCID-VLG/etrg_r50.ymal)``` to change the batch_size, directory and test-split etc. values.
 
 Our defualt setup: bs=11 on 1 NVIDIA RTX 2080 TI GPU.
 
 
-## Test ETOG:
+## Test ETRG:
 Directly run the```test.py``` file. Please modify the config files ```(e.g. config/OCID-VLG/etrg_r50.ymal)``` to change the directory specifics, model weights selection (```resume``` key).
 
 
