@@ -1,0 +1,63 @@
+DATA:
+  dataset: OCID-VLG
+  root_path: datasets
+  train_split: train
+  val_split: val
+TRAIN:
+  # Base Arch
+  clip_pretrain: pretrain/RN101.pt
+  version: multiple
+  input_size: 416
+  word_len: 20
+  word_dim: 512
+  ladder_dim: 64
+  nhead: 4
+  multi_stage: 3
+  vis_dim: 512
+  fpn_in: [512, 1024, 512]
+  fpn_out: [256, 512, 1024]
+  sync_bn: True
+  # Decoder
+  num_layers: 3
+  num_head: 8
+  dim_ffn: 512
+  dropout: 0.0
+  intermediate: False
+  # Training Setting
+  workers: 8  # data loader workers
+  workers_val: 8
+  epochs: 40
+  milestones: [35]
+  start_epoch: 0
+  batch_size: 11  # batch size for training
+  batch_size_val: 11  # batch size for validation during training, memory and speed tradeoff
+  base_lr: 0.0001
+  lr_decay: 0.1
+  lr_multi: 1
+  weight_decay: 0.01
+  max_norm: 0.
+  batchnorm: True
+  lang_fusion_type: multi
+  bilinear: True
+  manual_seed: 0
+  print_freq: 100
+  # Resume & Save
+  exp_name: etrg_101_depth
+  output_folder: exp/etrg_test
+  save_freq: 1
+  weight:  # path to initial weight (default: none)
+  resume:   exp/etrg_test/etrg_101_depth/best_jindex_model.pth # exp/etrg_test/bridger_101_depth/best_jindex_model.pth
+  evaluate: True  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  # Ablation study
+  use_contrastive: True
+  use_pretrained_clip: True
+  use_grasp_masks: True
+Distributed:
+  dist_url: tcp://localhost:3681
+  dist_backend: 'nccl'
+  multiprocessing_distributed: True
+  world_size: 1
+  rank: 0
+TEST:
+  test_split: val-test
+  visualize: False
